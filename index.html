@@ -774,31 +774,62 @@
         <span class="callout-icon">🔐</span>
         <span>Use this if you generated a System User token in Phase 2. This connects Manus directly to the Meta Marketing API — no OAuth, no re-authentication, no expiry.</span>
       </div>
+      <!-- Field-by-field config reference -->
+      <div style="background:#f8faff;border:1px solid #dde3f5;border-radius:10px;padding:14px 16px;margin-bottom:14px;">
+        <div style="font-family:'Archivo',sans-serif;font-weight:700;font-size:12px;color:#000a33;margin-bottom:10px;">What to fill in the MCP Configuration Modal</div>
+        <div style="display:grid;gap:7px;">
+          <div style="display:flex;gap:10px;align-items:flex-start;background:#fff;border:1px solid #e5e7eb;border-radius:7px;padding:8px 12px;">
+            <div style="font-size:10px;font-weight:700;color:#6366f1;min-width:120px;">Server Name</div>
+            <div style="font-size:11px;color:#333;">Any name, e.g. <code>Meta Ads</code></div>
+          </div>
+          <div style="display:flex;gap:10px;align-items:flex-start;background:#fff;border:1px solid #e5e7eb;border-radius:7px;padding:8px 12px;">
+            <div style="font-size:10px;font-weight:700;color:#6366f1;min-width:120px;">Transport Type</div>
+            <div style="font-size:11px;color:#333;">Select <strong>HTTP</strong></div>
+          </div>
+          <div style="display:flex;gap:10px;align-items:flex-start;background:#fff;border:1px solid #e5e7eb;border-radius:7px;padding:8px 12px;">
+            <div style="font-size:10px;font-weight:700;color:#6366f1;min-width:120px;">Server URL</div>
+            <div style="font-size:11px;color:#333;"><code>https://mcp.pipeboard.co/meta-ads-mcp</code></div>
+          </div>
+          <div style="display:flex;gap:10px;align-items:flex-start;background:#fff;border:1px solid #e5e7eb;border-radius:7px;padding:8px 12px;">
+            <div style="font-size:10px;font-weight:700;color:#6366f1;min-width:120px;">Custom Headers</div>
+            <div style="font-size:11px;color:#333;">Click <strong>"+ Add custom header"</strong><br>
+              <span style="font-family:monospace;background:#f0f4ff;padding:3px 7px;border-radius:4px;font-size:10px;display:inline-block;margin-top:4px;">Name: <strong>X-META-ACCESS-TOKEN</strong> &nbsp;|&nbsp; Value: <em>your System User token</em></span><br>
+              <span style="color:#888;font-size:10px;margin-top:3px;display:block;">There is no separate token field — this custom header IS how the token is passed.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <ul class="checklist" id="checklist-phase-3b">
         <li class="checklist-item" onclick="toggleCheck(this)" data-phase="phase-3">
           <div class="check-box"><span class="check-icon">✓</span></div>
           <div class="item-content">
-            <div class="item-text">In Manus Settings → Connectors, click the <strong>"Custom MCP"</strong> tab → <strong>"Add Custom MCP Server"</strong></div>
+            <div class="item-text">In Manus, click your profile icon → <strong>Settings</strong> → <strong>Connectors</strong></div>
           </div>
         </li>
         <li class="checklist-item" onclick="toggleCheck(this)" data-phase="phase-3">
           <div class="check-box"><span class="check-icon">✓</span></div>
           <div class="item-content">
-            <div class="item-text">Set the server name to exactly: <code>meta-marketing</code></div>
-            <div class="item-note">This is the identifier Manus uses to route Meta Ads API calls. It must match exactly.</div>
+            <div class="item-text">Click <strong>"+ Add Connector"</strong> then select <strong>"Custom MCP"</strong></div>
           </div>
         </li>
         <li class="checklist-item" onclick="toggleCheck(this)" data-phase="phase-3">
           <div class="check-box"><span class="check-icon">✓</span></div>
           <div class="item-content">
-            <div class="item-text">Paste your <strong>System User access token</strong> into the token field</div>
+            <div class="item-text">Set <strong>Server Name</strong> to anything (e.g. <code>Meta Ads</code>), set <strong>Transport Type</strong> to <code>HTTP</code></div>
           </div>
         </li>
         <li class="checklist-item" onclick="toggleCheck(this)" data-phase="phase-3">
           <div class="check-box"><span class="check-icon">✓</span></div>
           <div class="item-content">
-            <div class="item-text">Enter your <strong>Ad Account ID</strong> in the format <code>act_XXXXXXXXXX</code></div>
-            <div class="item-note">Find this in Ads Manager → Settings → Account ID. Must include the "act_" prefix.</div>
+            <div class="item-text">Paste into <strong>Server URL</strong>: <code>https://mcp.pipeboard.co/meta-ads-mcp</code></div>
+          </div>
+        </li>
+        <li class="checklist-item" onclick="toggleCheck(this)" data-phase="phase-3">
+          <div class="check-box"><span class="check-icon">✓</span></div>
+          <div class="item-content">
+            <div class="item-text">Click <strong>"+ Add custom header"</strong> — set name to <code>X-META-ACCESS-TOKEN</code>, paste your System User token as the value</div>
+            <div class="item-note">This is where your token goes. There is no separate token field — the custom header is the token field.</div>
           </div>
         </li>
         <li class="checklist-item" onclick="toggleCheck(this)" data-phase="phase-3">
