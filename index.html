@@ -707,10 +707,7 @@
         </div>
       </div>
 
-      <div class="upgrade-nudge">
-        <p>Want the full step-by-step breakdown with screenshots, permission checklists, and troubleshooting? <strong>The complete guide has everything.</strong></p>
-        <a href="https://cormac-cmyk.github.io/meta-manus-setup-guide/" target="_blank">View the Full Setup Guide &rarr;</a>
-      </div>
+
     </div>
   </div>
 
@@ -724,60 +721,115 @@
         <div class="phase-desc">Add your token to Manus and start managing ads with AI prompts.</div>
       </div>
       <div class="phase-meta">
-        <span class="phase-progress-pill" id="pill-phase-3">0 / 5</span>
+        <span class="phase-progress-pill" id="pill-phase-3">0 / 10</span>
         <span class="phase-chevron">▼</span>
       </div>
     </div>
     <div class="phase-body">
       <div class="callout info">
         <span class="callout-icon">💡</span>
-        <span>Manus has a <strong>built-in Meta Ads Manager connector</strong> — the easiest way to connect. If you generated a System User token, you can also add it as a Custom MCP for full persistent access.</span>
+        <span>This connection gives Manus <strong>full read and write access</strong> to your Meta Ads account via the Marketing API — the same API Meta uses internally. Manus can read data, launch campaigns, pause ads, adjust budgets, and upload new creatives.</span>
       </div>
+
+      <div style="font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;color:#000a33;margin-bottom:12px;">Option A — Built-in Connector (Quick Start token)</div>
       <ul class="checklist" id="checklist-phase-3">
         <li class="checklist-item" onclick="toggleCheck(this)" data-phase="phase-3">
           <div class="check-box"><span class="check-icon">✓</span></div>
           <div class="item-content">
-            <div class="item-text">Log in to <strong>manus.im</strong> and open any task or conversation</div>
+            <div class="item-text">Log in to <strong>manus.im</strong> → click your profile icon → <strong>Settings → Connectors</strong></div>
           </div>
         </li>
         <li class="checklist-item" onclick="toggleCheck(this)" data-phase="phase-3">
           <div class="check-box"><span class="check-icon">✓</span></div>
           <div class="item-content">
-            <div class="item-text">Click the <strong>connector icon</strong> at the bottom of the chat input bar</div>
+            <div class="item-text">Find <strong>"Meta Ads Manager"</strong> and click <strong>"Connect"</strong> — log in with Facebook and grant permissions</div>
+            <div class="item-note">Select the Ad Account(s) you want Manus to access when prompted.</div>
           </div>
         </li>
         <li class="checklist-item" onclick="toggleCheck(this)" data-phase="phase-3">
           <div class="check-box"><span class="check-icon">✓</span></div>
           <div class="item-content">
-            <div class="item-text">Find <strong>"Meta Ads Manager"</strong> in the list and click <strong>"Connect"</strong></div>
-            <div class="item-note">For System User token: select "Custom MCP" and paste your token and Ad Account ID.</div>
-          </div>
-        </li>
-        <li class="checklist-item" onclick="toggleCheck(this)" data-phase="phase-3">
-          <div class="check-box"><span class="check-icon">✓</span></div>
-          <div class="item-content">
-            <div class="item-text">Authorise the connection and confirm it shows as <strong>Connected</strong></div>
-          </div>
-        </li>
-        <li class="checklist-item" onclick="toggleCheck(this)" data-phase="phase-3">
-          <div class="check-box"><span class="check-icon">✓</span></div>
-          <div class="item-content">
-            <div class="item-text">Test it — type: <em>"Show me the active campaigns in my Meta Ads account"</em></div>
-            <div class="item-note">If Manus returns your campaign list, you're fully connected and ready to go.</div>
+            <div class="item-text">Confirm the connector shows as <strong>Connected ✓</strong></div>
           </div>
         </li>
       </ul>
+
+      <div style="font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;color:#000a33;margin:20px 0 12px;">Option B — Custom MCP (System User token — permanent)</div>
+      <div class="callout warning" style="margin-bottom:12px;">
+        <span class="callout-icon">🔐</span>
+        <span>Use this if you generated a System User token in Phase 2. This connects Manus directly to the Meta Marketing API — no OAuth, no re-authentication, no expiry.</span>
+      </div>
+      <ul class="checklist" id="checklist-phase-3b">
+        <li class="checklist-item" onclick="toggleCheck(this)" data-phase="phase-3">
+          <div class="check-box"><span class="check-icon">✓</span></div>
+          <div class="item-content">
+            <div class="item-text">In Manus Settings → Connectors, click the <strong>"Custom MCP"</strong> tab → <strong>"Add Custom MCP Server"</strong></div>
+          </div>
+        </li>
+        <li class="checklist-item" onclick="toggleCheck(this)" data-phase="phase-3">
+          <div class="check-box"><span class="check-icon">✓</span></div>
+          <div class="item-content">
+            <div class="item-text">Set the server name to exactly: <code>meta-marketing</code></div>
+            <div class="item-note">This is the identifier Manus uses to route Meta Ads API calls. It must match exactly.</div>
+          </div>
+        </li>
+        <li class="checklist-item" onclick="toggleCheck(this)" data-phase="phase-3">
+          <div class="check-box"><span class="check-icon">✓</span></div>
+          <div class="item-content">
+            <div class="item-text">Paste your <strong>System User access token</strong> into the token field</div>
+          </div>
+        </li>
+        <li class="checklist-item" onclick="toggleCheck(this)" data-phase="phase-3">
+          <div class="check-box"><span class="check-icon">✓</span></div>
+          <div class="item-content">
+            <div class="item-text">Enter your <strong>Ad Account ID</strong> in the format <code>act_XXXXXXXXXX</code></div>
+            <div class="item-note">Find this in Ads Manager → Settings → Account ID. Must include the "act_" prefix.</div>
+          </div>
+        </li>
+        <li class="checklist-item" onclick="toggleCheck(this)" data-phase="phase-3">
+          <div class="check-box"><span class="check-icon">✓</span></div>
+          <div class="item-content">
+            <div class="item-text">Click <strong>"Save"</strong> — the MCP server is now active and permanently connected</div>
+          </div>
+        </li>
+      </ul>
+
+      <div style="font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;color:#000a33;margin:20px 0 12px;">Test Your Connection</div>
+      <ul class="checklist" id="checklist-phase-3c">
+        <li class="checklist-item" onclick="toggleCheck(this)" data-phase="phase-3">
+          <div class="check-box"><span class="check-icon">✓</span></div>
+          <div class="item-content">
+            <div class="item-text">Start a new Manus task and type: <em>"Show me all active campaigns in my Meta Ads account"</em></div>
+            <div class="item-note">Manus should return your campaign list with status and spend data.</div>
+          </div>
+        </li>
+        <li class="checklist-item" onclick="toggleCheck(this)" data-phase="phase-3">
+          <div class="check-box"><span class="check-icon">✓</span></div>
+          <div class="item-content">
+            <div class="item-text">Test a write action: <em>"Pause ad [name of an ad]"</em> — confirm Manus can take action, not just read</div>
+            <div class="item-note">Only do this on an ad you're comfortable pausing temporarily.</div>
+          </div>
+        </li>
+      </ul>
+
+      <div style="background:#f0fdf9;border:1px solid #a7f3d0;border-radius:10px;padding:16px 18px;margin-top:20px;">
+        <div style="font-family:'Archivo',sans-serif;font-weight:800;font-size:13px;color:#00916e;margin-bottom:10px;">✅ What This Connection Unlocks</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:13px;color:#1a1a2e;">
+          <div>📊 Pull campaign performance reports</div>
+          <div>🚀 Launch new campaigns &amp; ad sets</div>
+          <div>⏸️ Pause or activate ads instantly</div>
+          <div>🎨 Upload new ad creatives</div>
+          <div>💰 Adjust budgets programmatically</div>
+          <div>🔁 Duplicate winning ad sets</div>
+        </div>
+      </div>
+
       <div class="resource-block">
         <div class="resource-block-title">🔗 Quick Links</div>
         <div class="resource-links">
           <a class="resource-link" href="https://manus.im" target="_blank">Manus — Sign In</a>
-          <a class="resource-link" href="https://cormac-cmyk.github.io/meta-manus-setup-guide/" target="_blank">Full Setup Guide</a>
+          <a class="resource-link" href="https://business.facebook.com/settings/system-users" target="_blank">Business Manager — System Users</a>
         </div>
-      </div>
-
-      <div class="upgrade-nudge">
-        <p>Need the full walkthrough? The <strong>complete guide</strong> covers every phase in detail — System User setup, Custom MCP config, troubleshooting, and more.</p>
-        <a href="https://cormac-cmyk.github.io/meta-manus-setup-guide/" target="_blank">View the Full Setup Guide &rarr;</a>
       </div>
     </div>
   </div>
@@ -795,7 +847,7 @@
 </div><!-- end .content -->
 
 <footer>
-  <p>Built for <a href="https://manus.im" target="_blank">Manus</a> × <a href="https://developers.facebook.com" target="_blank">Meta for Developers</a> &mdash; Progress saved locally in your browser. &nbsp;|&nbsp; <a href="https://cormac-cmyk.github.io/meta-manus-setup-guide/" target="_blank">View Full Guide</a></p>
+  <p>Built for <a href="https://manus.im" target="_blank">Manus</a> × <a href="https://developers.facebook.com" target="_blank">Meta for Developers</a> &mdash; Progress saved locally in your browser.</p>
 </footer>
 
 <script>
@@ -865,6 +917,8 @@
       ...document.querySelectorAll('#checklist-phase-1 .checklist-item'),
       ...document.querySelectorAll('#' + activeListId + ' .checklist-item'),
       ...document.querySelectorAll('#checklist-phase-3 .checklist-item'),
+      ...document.querySelectorAll('#checklist-phase-3b .checklist-item'),
+      ...document.querySelectorAll('#checklist-phase-3c .checklist-item'),
     ];
     const total = allItems.length;
     const done = allItems.filter(i => i.classList.contains('checked')).length;
@@ -889,6 +943,12 @@
       let items;
       if (phaseId === 'phase-2') {
         items = document.querySelectorAll('#' + activeListId + ' .checklist-item');
+      } else if (phaseId === 'phase-3') {
+        items = [
+          ...document.querySelectorAll('#checklist-phase-3 .checklist-item'),
+          ...document.querySelectorAll('#checklist-phase-3b .checklist-item'),
+          ...document.querySelectorAll('#checklist-phase-3c .checklist-item'),
+        ];
       } else {
         items = card.querySelectorAll('.checklist-item');
       }
