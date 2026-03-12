@@ -528,7 +528,7 @@
         <div class="phase-desc">Create your app at Meta for Developers and activate the Marketing API.</div>
       </div>
       <div class="phase-meta">
-        <span class="phase-progress-pill" id="pill-phase-1">0 / 6</span>
+        <span class="phase-progress-pill" id="pill-phase-1">0 / 7</span>
         <span class="phase-chevron">▼</span>
       </div>
     </div>
@@ -560,20 +560,28 @@
         <li class="checklist-item" onclick="toggleCheck(this)" data-phase="phase-1">
           <div class="check-box"><span class="check-icon">✓</span></div>
           <div class="item-content">
-            <div class="item-text">Name your app (e.g. <code>Manus Ads Manager</code>) and click <strong>"Create App"</strong></div>
-          </div>
-        </li>
-        <li class="checklist-item" onclick="toggleCheck(this)" data-phase="phase-1">
-          <div class="check-box"><span class="check-icon">✓</span></div>
-          <div class="item-content">
-            <div class="item-text">Inside your app dashboard, go to <strong>App Settings → Basic</strong> and copy your <strong>App ID</strong> and <strong>App Secret</strong></div>
-            <div class="item-note">Keep these safe — you'll need them to generate tokens.</div>
+            <div class="item-text">Name your app (e.g. <code>Manus Ads Manager</code>), link it to your Business Manager, and click <strong>"Create App"</strong></div>
           </div>
         </li>
         <li class="checklist-item" onclick="toggleCheck(this)" data-phase="phase-1">
           <div class="check-box"><span class="check-icon">✓</span></div>
           <div class="item-content">
             <div class="item-text">In the left sidebar, click <strong>"Add Product"</strong> and add the <strong>Marketing API</strong> product</div>
+            <div class="item-note"><strong>Why?</strong> The Marketing API is not active by default. Adding it is what unlocks the ads_management and ads_read endpoints — without this, no API call related to ads will work regardless of what token you have.</div>
+          </div>
+        </li>
+        <li class="checklist-item" onclick="toggleCheck(this)" data-phase="phase-1">
+          <div class="check-box"><span class="check-icon">✓</span></div>
+          <div class="item-content">
+            <div class="item-text">Go to <strong>App Settings → Advanced</strong> — scroll to <strong>"Advertising Accounts"</strong> and add your Ad Account ID (numbers only, no <code>act_</code> prefix)</div>
+            <div class="item-note"><strong>Why?</strong> This associates your ad account with the app. To manage additional ad accounts (e.g. clients) in the future, you must add each one here — otherwise the API cannot access them through this app.</div>
+          </div>
+        </li>
+        <li class="checklist-item" onclick="toggleCheck(this)" data-phase="phase-1">
+          <div class="check-box"><span class="check-icon">✓</span></div>
+          <div class="item-content">
+            <div class="item-text">Go to <strong>App Settings → Basic</strong> and copy your <strong>App ID</strong> and <strong>App Secret</strong> — save them securely</div>
+            <div class="item-note"><strong>Why?</strong> Your App ID is required when generating a System User token — Business Manager asks you to select which app the token is for. Your App Secret is used for server-side API verification. Never share either publicly.</div>
           </div>
         </li>
       </ul>
@@ -676,26 +684,42 @@
           <li class="checklist-item" onclick="toggleCheck(this)" data-phase="phase-2">
             <div class="check-box"><span class="check-icon">✓</span></div>
             <div class="item-content">
-              <div class="item-text">Go to <strong>business.facebook.com → Business Settings → System Users</strong></div>
+              <div class="item-text">Go to <strong>business.facebook.com → Business Settings → Users → System Users</strong></div>
             </div>
           </li>
           <li class="checklist-item" onclick="toggleCheck(this)" data-phase="phase-2">
             <div class="check-box"><span class="check-icon">✓</span></div>
             <div class="item-content">
-              <div class="item-text">Click <strong>"Add"</strong> → name it (e.g. <code>Manus System User</code>) → set role to <strong>Admin</strong></div>
+              <div class="item-text">Click <strong>"Add"</strong> → name it (e.g. <code>Manus System User</code>) → set role to <strong>Admin</strong> → click <strong>"Create System User"</strong></div>
+              <div class="item-note">Admin role is required for full ads management access including creating and pausing ads.</div>
             </div>
           </li>
           <li class="checklist-item" onclick="toggleCheck(this)" data-phase="phase-2">
             <div class="check-box"><span class="check-icon">✓</span></div>
             <div class="item-content">
-              <div class="item-text">Click <strong>"Add Assets"</strong> → select your Ad Account → enable <strong>"Manage Ad Account"</strong></div>
+              <div class="item-text">Select your System User → click <strong>"Add Assets"</strong> → choose <strong>"Apps"</strong> → select your Meta Developer App → enable <strong>"Manage App"</strong> → click <strong>"Save"</strong></div>
+              <div class="item-note"><strong>Critical step:</strong> The app must be installed on the System User before you can generate a token for it. If you skip this, the token generation dropdown will not show your app.</div>
             </div>
           </li>
           <li class="checklist-item" onclick="toggleCheck(this)" data-phase="phase-2">
             <div class="check-box"><span class="check-icon">✓</span></div>
             <div class="item-content">
-              <div class="item-text">Click <strong>"Generate New Token"</strong> → select your app → tick all required permissions → copy the token</div>
-              <div class="item-note">Required permissions: ads_management, ads_read, business_management, pages_show_list, pages_read_engagement.</div>
+              <div class="item-text">Click <strong>"Add Assets"</strong> again → choose <strong>"Ad Accounts"</strong> → select your Ad Account → enable <strong>"Manage Ad Account"</strong> → click <strong>"Save"</strong></div>
+              <div class="item-note">This gives the System User token full read and write access to your ad account. For each additional ad account you want Manus to manage, repeat this step.</div>
+            </div>
+          </li>
+          <li class="checklist-item" onclick="toggleCheck(this)" data-phase="phase-2">
+            <div class="check-box"><span class="check-icon">✓</span></div>
+            <div class="item-content">
+              <div class="item-text">Click <strong>"Generate New Token"</strong> → select your app from the dropdown → tick all required permissions → set expiry to <strong>"Never"</strong> → click <strong>"Generate Token"</strong></div>
+              <div class="item-note">Required permissions: ads_management, ads_read, business_management, pages_show_list, pages_read_engagement, read_insights.</div>
+            </div>
+          </li>
+          <li class="checklist-item" onclick="toggleCheck(this)" data-phase="phase-2">
+            <div class="check-box"><span class="check-icon">✓</span></div>
+            <div class="item-content">
+              <div class="item-text"><strong>Copy and save your token immediately</strong> — Meta will not show it again after you close this window</div>
+              <div class="item-note">Store it in a password manager. You will paste this into the Manus Custom MCP configuration in Phase 3.</div>
             </div>
           </li>
         </ul>
