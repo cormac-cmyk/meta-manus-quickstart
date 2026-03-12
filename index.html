@@ -726,9 +726,24 @@
       </div>
     </div>
     <div class="phase-body">
-      <div class="callout info">
-        <span class="callout-icon">💡</span>
-        <span>This connection gives Manus <strong>full read and write access</strong> to your Meta Ads account via the Marketing API — the same API Meta uses internally. Manus can read data, launch campaigns, pause ads, adjust budgets, and upload new creatives.</span>
+      <!-- Two-layer distinction block -->
+      <div style="background:#f0f4ff;border:1px solid #c7d2fe;border-radius:12px;padding:18px 20px;margin-bottom:18px;">
+        <div style="font-family:'Archivo',sans-serif;font-weight:800;font-size:13px;color:#000a33;margin-bottom:12px;">There are two layers to this connection — you need both</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+          <div style="background:#fff;border:2px solid #6366f1;border-radius:8px;padding:12px 14px;">
+            <div style="font-family:'Archivo',sans-serif;font-weight:800;font-size:12px;color:#6366f1;margin-bottom:5px;">📊 Layer 1 — MCP Connector</div>
+            <div style="font-size:11px;color:#444;line-height:1.6;">Connects Manus to the Meta Marketing API for <strong>read access</strong> — reports, insights, campaign data. Token stored securely in Manus.</div>
+            <div style="margin-top:6px;font-size:10px;color:#6366f1;font-weight:600;">✓ Reports &nbsp;✓ Insights &nbsp;✓ Data</div>
+          </div>
+          <div style="background:#fff;border:2px solid #00916e;border-radius:8px;padding:12px 14px;">
+            <div style="font-family:'Archivo',sans-serif;font-weight:800;font-size:12px;color:#00916e;margin-bottom:5px;">⚡ Layer 2 — Graph API (System User)</div>
+            <div style="font-size:11px;color:#444;line-height:1.6;">Your System User token lets Manus call the <strong>Meta Graph API directly</strong> to <strong>write actions</strong> — launch ads, pause ads, adjust budgets, upload creatives.</div>
+            <div style="margin-top:6px;font-size:10px;color:#00916e;font-weight:600;">✓ Launch &nbsp;✓ Pause &nbsp;✓ Adjust</div>
+          </div>
+        </div>
+        <div style="margin-top:10px;font-size:11px;color:#555;background:#fff;border-radius:6px;padding:8px 12px;border:1px solid #e0e0e0;">
+          <strong>Both use the same System User token.</strong> The MCP uses it for structured read queries. The Graph API uses it for direct write actions via Python scripts Manus executes on your behalf.
+        </div>
       </div>
 
       <div style="font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;color:#000a33;margin-bottom:12px;">Option A — Built-in Connector (Quick Start token)</div>
